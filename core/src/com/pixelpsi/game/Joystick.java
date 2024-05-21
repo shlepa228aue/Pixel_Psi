@@ -94,4 +94,8 @@ public class Joystick extends InputAdapter {
     public float getY(){
         return knobPosition.y - position.y;
     }
+    void dispose(){
+        backgroundTexture.dispose();
+        knobTexture.dispose();
+    }
 }

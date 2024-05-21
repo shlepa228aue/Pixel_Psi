@@ -27,7 +27,7 @@ public class Bag {
             else thing[i] = new MyButton(x+width*(i-4)/4, y, width/4, height/2);
         }
 
-        close = new MyButton(x+width, y+height, 250, 250);
+        close = new MyButton(x+width, y+height, 150, 150);
         bag = new MyButton(WIDTH-150, HEIGHT-150, 100, 100);
 
         bg = new Texture("bag/bag.png");

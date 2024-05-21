@@ -62,4 +62,9 @@ public class Curtain {
     void active(){
         isWork = true;
     }
+
+    void dispose(){
+        textures[0].dispose();
+        textures[1].dispose();
+    }
 }

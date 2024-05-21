@@ -164,6 +164,7 @@ public class ScreenChoose implements Screen {
 
     @Override
     public void dispose() {
+        curtain.dispose();
         imgBg.dispose();
         imgLueMal.dispose();
         imgLueFem.dispose();

@@ -313,7 +313,8 @@ public class ScreenStreet implements Screen {
         for (int i = 0; i < imgBg01[1].length; i++) {
             imgBg01[1][i].dispose();
         }*/
-
+        curtain.dispose();
+        joystick.dispose();
         btnDialog[0][0].dispose();
         btnDialog[0][1].dispose();
         btnDialog[1][0].dispose();
