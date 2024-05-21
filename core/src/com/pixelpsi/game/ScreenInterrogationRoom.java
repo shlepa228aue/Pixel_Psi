@@ -52,8 +52,8 @@ public class ScreenInterrogationRoom implements Screen {
     Dialogs dialog;
     FileHandle file0, file1;
 
-    Curtain curtain;
-    Sprite sprite;
+    Curtain curtain, curtain1;
+    Sprite sprite, sprite1;
 
     Music door, drop, hm, pages;
 
@@ -79,6 +79,7 @@ public class ScreenInterrogationRoom implements Screen {
         imgBg01[1][3] = imgBg01[1][4] = new Texture("interrogation room/interrogation room11.png");
 
         bg = new BackGround(0, 0, WIDTH, HEIGHT);
+        //bg.scene = 2;
 
         imgLueFem = new Texture("pers/lue1.png");
         int count = 0;
@@ -112,7 +113,7 @@ public class ScreenInterrogationRoom implements Screen {
         btnDialog[1][0] = new Texture("btnDialogD0.png");
         btnDialog[1][1] = new Texture("btnDialogD1.png");
         who = 0;
-        btn = new MyButton(2, 500, WIDTH/3, HEIGHT*6/10, 140, 108);
+        btn = new MyButton(2, 500, WIDTH/3+100, HEIGHT*6/10, 140, 108);
 
         imgBtnPause = new Texture("pause.png");
         buttonPause = new MyButton(30, HEIGHT*8.1f/10, 160, 180);
@@ -126,8 +127,10 @@ public class ScreenInterrogationRoom implements Screen {
         dialog = new Dialogs(fontSmall, file0);
 
         curtain = new Curtain(0, 1, 1000);
+        curtain1 = new Curtain(0, 0, 1000);
         sprite = new Sprite(curtain.textures[curtain.color]);
         sprite.setSize(3000, 3000);
+        sprite1 = sprite;
 
         door = Gdx.audio.newMusic(Gdx.files.internal("interrogation room/door.mp3"));
         drop = Gdx.audio.newMusic(Gdx.files.internal("interrogation room/drop.mp3"));
@@ -171,6 +174,9 @@ public class ScreenInterrogationRoom implements Screen {
                     else if(bg.scene == 2){
                         bg.time = TimeUtils.millis();
                         bg.next(5);
+                        curtain.active();
+                    } else if (bg.scene == 3) {
+                        bg.next();
                         curtain.active();
                     } else bg.next();
                 }
@@ -218,7 +224,7 @@ public class ScreenInterrogationRoom implements Screen {
             }
 
             if(btn.isNeedToShow) {
-                btn.returns(WIDTH*2/3-btn.width, HEIGHT*6/10);
+                btn.returns(WIDTH*2/3-btn.width-100, HEIGHT*6/10);
             }
 
             if(kostilDrop){
@@ -233,7 +239,10 @@ public class ScreenInterrogationRoom implements Screen {
             }
         }
         if(bg.scene == 4){
-            pixelPsi.setScreen(pixelPsi.screenStreet);
+            if(curtain.isWork) curtain.show();
+            if(curtain.isNeedToSwitch) {
+                pixelPsi.setScreen(pixelPsi.screenStreet);
+            }
         }
 
 

@@ -195,6 +195,8 @@ public class ScreenStreet implements Screen {
 
 
         // события игры
+        if(curtain.isWork) curtain.hide();
+
         for (int i = 0; i < objects.length; i++) {
             if (lue.rectangleUp.overlaps(objects[i])) lue.vyPlus = false;
             if (lue.rectangleDown.overlaps(objects[i])) lue.vyMinus = false;
@@ -275,10 +277,7 @@ public class ScreenStreet implements Screen {
 
         bag.draw(batch);
 
-        /*if(curtain.isWork) {
-            sprite.setAlpha(curtain.transparency);
-            sprite.draw(batch);
-        }*/
+        curtain.draw(batch, sprite);
 
         batch.end();
     }
